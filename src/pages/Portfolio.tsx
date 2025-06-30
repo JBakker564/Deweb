@@ -149,27 +149,6 @@ export default function Portfolio() {
               </div>
             )}
 
-            {/* Progress Indicator - Subtle dots on the right */}
-            {videos.length > 1 && (
-              <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-30 space-y-3">
-                {videos.map((_, dotIndex) => (
-                  <button
-                    key={dotIndex}
-                    onClick={() => {
-                      const element = document.querySelectorAll('[data-video-section]')[dotIndex];
-                      element?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      dotIndex === index 
-                        ? 'bg-white scale-125' 
-                        : 'bg-white/30 hover:bg-white/60'
-                    }`}
-                    title={`Video ${dotIndex + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-
             {/* Add data attribute for scroll targeting */}
             <div data-video-section={index} className="absolute top-0 left-0 w-1 h-1 opacity-0 pointer-events-none"></div>
           </div>
@@ -180,18 +159,6 @@ export default function Portfolio() {
           <div className="fixed bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-20"></div>
         )}
       </div>
-
-      {/* Video Counter - Bottom left */}
-      {videos.length > 1 && (
-        <div className="fixed bottom-8 left-8 z-30">
-          <div className="text-white/60 text-sm font-light tracking-wider">
-            {videos.findIndex(v => {
-              const rect = document.querySelector(`[data-video-section="${videos.indexOf(v)}"]`)?.getBoundingClientRect();
-              return rect && rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2;
-            }) + 1 || 1} / {videos.length}
-          </div>
-        </div>
-      )}
     </div>
   );
 }
