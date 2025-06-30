@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RED Camera Control</string>
+    
+    <!-- Main Screen -->
+    <string name="camera_ip">Camera IP Address</string>
+    <string name="camera_port">Port</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    
+    <!-- Recording Controls -->
+    <string name="start_recording">START REC</string>
+    <string name="stop_recording">STOP REC</string>
+    <string name="recording_status">Recording Status: %1$s</string>
+    <string name="recording">RECORDING</string>
+    <string name="standby">STANDBY</string>
+    
+    <!-- Camera Settings -->
+    <string name="iso_label">ISO</string>
+    <string name="set_iso">SET ISO</string>
+    <string name="shutter_angle_label">Shutter Angle</string>
+    <string name="set_shutter">SET SHUTTER</string>
+    
+    <!-- Status Messages -->
+    <string name="connecting">Connecting...</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="connection_error">Connection Error</string>
+    <string name="command_sent">Command Sent</string>
+    <string name="command_error">Command Error</string>
+    
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="save_settings">Save Settings</string>
+</resources>

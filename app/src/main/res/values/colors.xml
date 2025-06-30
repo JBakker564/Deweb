@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="red_primary">#E50101</color>
+    <color name="red_dark">#B30000</color>
+    <color name="red_light">#FF5252</color>
+    
+    <color name="dark_background">#1A1A1A</color>
+    <color name="darker_background">#121212</color>
+    <color name="black">#000000</color>
+    
+    <color name="white">#FFFFFF</color>
+    <color name="light_gray">#D3D3D3</color>
+    <color name="medium_gray">#6E6E6E</color>
+    
+    <color name="status_recording">#FF0000</color>
+    <color name="status_standby">#4CAF50</color>
+    <color name="status_connecting">#FFC107</color>
+    <color name="status_error">#FF5252</color>
+</resources>

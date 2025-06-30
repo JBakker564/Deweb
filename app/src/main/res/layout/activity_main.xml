@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_background"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Connection Section -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/red_primary"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ipAddressLayout"
+        style="@style/InputField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/camera_ip"
+        app:layout_constraintEnd_toStartOf="@id/portLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintWidth_percent="0.7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ipAddressEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:text="192.168.1.1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/portLayout"
+        style="@style/InputField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/camera_port"
+        app:layout_constraintBottom_toBottomOf="@id/ipAddressLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ipAddressLayout"
+        app:layout_constraintTop_toTopOf="@id/ipAddressLayout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/portEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="8080"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/connectButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:text="@string/connect"
+        app:layout_constraintEnd_toStartOf="@id/disconnectButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ipAddressLayout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/disconnectButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/disconnect"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="@id/connectButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/connectButton"
+        app:layout_constraintTop_toTopOf="@id/connectButton" />
+
+    <TextView
+        android:id="@+id/connectionStatusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/disconnected"
+        android:textAlignment="center"
+        android:textColor="@color/medium_gray"
+        app:layout_constraintTop_toBottomOf="@id/connectButton" />
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/medium_gray"
+        app:layout_constraintTop_toBottomOf="@id/connectionStatusText" />
+
+    <!-- Recording Status -->
+    <TextView
+        android:id="@+id/recordingStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/recording_status"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+    <com.redcamera.control.ui.RecordingIndicator
+        android:id="@+id/recordingIndicator"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/recordingStatusLabel"
+        app:layout_constraintStart_toEndOf="@id/recordingStatusLabel"
+        app:layout_constraintTop_toTopOf="@id/recordingStatusLabel" />
+
+    <!-- Recording Controls -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/startRecordingButton"
+        style="@style/RecordButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/status_standby"
+        android:text="@string/start_recording"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/stopRecordingButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recordingStatusLabel" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/stopRecordingButton"
+        style="@style/RecordButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="@color/status_recording"
+        android:text="@string/stop_recording"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@id/startRecordingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/startRecordingButton"
+        app:layout_constraintTop_toTopOf="@id/startRecordingButton" />
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/medium_gray"
+        app:layout_constraintTop_toBottomOf="@id/startRecordingButton" />
+
+    <!-- Camera Settings -->
+    <TextView
+        android:id="@+id/settingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider2" />
+
+    <!-- ISO Settings -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/isoLayout"
+        style="@style/InputField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/iso_label"
+        app:layout_constraintEnd_toStartOf="@id/setIsoButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsLabel"
+        app:layout_constraintWidth_percent="0.6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/isoEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="800"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/setIsoButton"
+        style="@style/SettingButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/set_iso"
+        app:layout_constraintBottom_toBottomOf="@id/isoLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/isoLayout"
+        app:layout_constraintTop_toTopOf="@id/isoLayout" />
+
+    <!-- Shutter Angle Settings -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/shutterAngleLayout"
+        style="@style/InputField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:hint="@string/shutter_angle_label"
+        app:layout_constraintEnd_toStartOf="@id/setShutterButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/isoLayout"
+        app:layout_constraintWidth_percent="0.6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/shutterAngleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="180.0"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/setShutterButton"
+        style="@style/SettingButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/set_shutter"
+        app:layout_constraintBottom_toBottomOf="@id/shutterAngleLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/shutterAngleLayout"
+        app:layout_constraintTop_toTopOf="@id/shutterAngleLayout" />
+
+    <!-- Status Message -->
+    <TextView
+        android:id="@+id/statusMessageText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/darker_background"
+        android:padding="8dp"
+        android:textAlignment="center"
+        android:textColor="@color/light_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/shutterAngleLayout"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
